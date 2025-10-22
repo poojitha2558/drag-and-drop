@@ -1,4 +1,3 @@
-
 import {createRef, useEffect, useRef} from "react";
 import Note from "./Note";
 
@@ -99,6 +98,14 @@ const Notes = ({notes = [], setNotes = () => {}}) => {
     localStorage.setItem("notes", JSON.stringify(updatedNotes));
   };
 
+  const handleCheck = (id) => {
+    const updatedNotes = notes.map(note =>
+      note.id === id ? { ...note, isChecked: !note.isChecked } : note
+    );
+    setNotes(updatedNotes);
+    localStorage.setItem("notes", JSON.stringify(updatedNotes));
+  };
+
   return (
     <div>
       {notes.map((note) => {
@@ -112,6 +119,8 @@ const Notes = ({notes = [], setNotes = () => {}}) => {
             }
             initialPos={note.position}
             content={note.text}
+            isChecked={note.isChecked || false} // default to false if undefined
+            onCheck={() => handleCheck(note.id)} // handle checkbox change
             onMouseDown={(e) => handleDragStart(note, e)}
           />
         );

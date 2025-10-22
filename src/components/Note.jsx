@@ -1,7 +1,6 @@
-
 import {forwardRef} from "react";
 
-const Note = forwardRef(({content, initialPos, ...props}, ref) => {
+const Note = forwardRef(({content, initialPos, isChecked, onCheck, ...props}, ref) => {
   return (
     <div
       ref={ref}
@@ -18,6 +17,12 @@ const Note = forwardRef(({content, initialPos, ...props}, ref) => {
       }}
       {...props}
     >
+      <input 
+        type="checkbox" 
+        checked={isChecked} 
+        onChange={onCheck} 
+        style={{ marginRight: "10px" }} 
+      />
       📌 {content}
     </div>
   );

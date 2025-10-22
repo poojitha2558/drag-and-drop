@@ -6,11 +6,13 @@ function App() {
   const [notes, setNotes] = useState([
     {
       id: 1,
-      text: "Link in bio for my Frontend Interview Prep Course",
+      text: "Hi",
+      isChecked: false,
     },
     {
       id: 2,
-      text: "Like this Video and Subscribe to Roadside Coder",
+      text: "Hello",
+      isChecked: false,
     },
   ]);
 
@@ -18,7 +20,7 @@ function App() {
 
   const addNote = () => {
     if (note.trim()) {
-      setNotes([...notes, {id: notes.length + 1, text: note}]);
+      setNotes([...notes, {id: notes.length + 1, text: note, isChecked: false}]);
       setNote("");
     }
   };
