@@ -6,7 +6,7 @@ function App() {
   const [notes, setNotes] = useState([
     {
       id: 1,
-      text: "Hi",
+      text: "Hii",
       isChecked: false,
     },
     {
